@@ -1,6 +1,6 @@
 These scripts are used to evaluate sgRNA library that the number of reads that don't match U6 transcript pattern, that match U6 transcript pattern but NOT in design library (non-perfect match) and that match U6 transcript pattern and IN design library (perfect match).
 
-# Uage
+# Usage
 
 ```bash
 python sgRNA_library_calculator.py -f fastq-1.gz,fastq-2.gz -l design_library -r reference -o output
