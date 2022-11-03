@@ -102,12 +102,17 @@ bowtie = 'bowtie2 -x %s -p %s -U %s.extendedFrags.fastq.gz -S %s.sam' %(ref_file
 sgRNA_count_path = os.path.join(script_path[0], 'sgRNA_count.py')
 sgRNA_count = 'python %s %s %s.sam > %s.csv' %(sgRNA_count_path, key_g, output, output)
 
+fastp_log = os.popen(fastp).read()
 flash_log = os.popen(flash).read()
 bowtie_build_log = os.popen(bowtie_build).read()
 bowtie_log = os.popen(bowtie).read()
 sgRNA_count_log = os.popen(sgRNA_count).read()
 
 with open('%s-%s.log' %(output, script_path[1]), 'w') as log:
+    log.write('#'*20+'\n')
+    log.write('fastp QC log.\n%\n\n' %(fastp))
+    log.write(fastp_log)
+
     log.write('#'*20+'\n')
     log.write('FLASH merged log.\n%s\n\n' %(flash))
     log.write(flash_log)
