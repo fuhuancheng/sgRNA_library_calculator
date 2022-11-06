@@ -32,15 +32,17 @@ for line in fileinput.input(sam):
 
         # sgRNA extraction (18 ~ 22 bp)
         # U6 terminator: TTTTTT
-        try:
-            sgrna = re.findall(r"%s([ATGC]{0,}?)TTTTTT" %(key), fastq_seq)[0]
-        except:
+        sgrna = re.findall(r"%s([ATGC]{0,}?)TTTTTT" %(key), fastq_seq)
+        if len(sgrna) == 0:
             no_sgrna += 1
+            continue
+        else:
+            sgrna = sgrna[0]
         
         # add sgRNA to dict
-        try:
+        if sgrna in output:
             output[sgrna] +=1
-        except:
+        else:
             output[sgrna] = 1
     else:
         continue
