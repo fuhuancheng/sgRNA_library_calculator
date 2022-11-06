@@ -110,7 +110,7 @@ sgRNA_count_log = os.popen(sgRNA_count).read()
 
 with open('%s-%s.log' %(output, script_path[1]), 'w') as log:
     log.write('#'*20+'\n')
-    log.write('fastp QC log.\n%\n\n' %(fastp))
+    log.write('fastp QC log.\n%s\n\n' %(fastp))
     log.write(fastp_log)
 
     log.write('#'*20+'\n')
